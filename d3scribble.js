@@ -1,9 +1,9 @@
-canvas.selectAll("*").remove(); 
- 
-var dataset1 = [];                        
-for (var i = 0; i < 25; i++) {           
-  	var newNumber = Math.floor(15+Math.random()*85); 
-    dataset1.push(newNumber);            
+canvas.selectAll("*").remove();
+
+var dataset1 = [];
+for (var i = 0; i < 25; i++) {
+  	var newNumber = Math.floor(15+Math.random()*85);
+    dataset1.push(newNumber);
 }
 
 
@@ -16,19 +16,19 @@ var svg = canvas.append("svg")
 
 var n = dataset1.length;
 var w = Math.floor((svgW-2*n)/n);
-svg.selectAll("rect") 
+svg.selectAll("rect")
 	.data(dataset1)
 	.enter()
 	.append("rect")
 
 	.attr("x",function(d,i){return (w+2)*i;})
 	.attr("y",function(d,i){return 120-d;})
-	.attr("width",function(d,i){return w;})	
+	.attr("width",function(d,i){return w;})
 	.attr("fill","black")
 	.attr("height",function(d) {return d;})
-	.attr("fill",function(d,i){return "rgb("+Math.floor(d*2.55)+",0,0)";});
-     
-svg.selectAll("text") 
+	.attr("fill",function(d,i){return "rgb(0,0,"+Math.floor(d*2.55)+")";});
+
+svg.selectAll("text")
 	.data(dataset1)
 	.enter()
 	.append("text")
@@ -59,12 +59,12 @@ svg.selectAll("circle")
 var dataset2 = [];
 var xRange = Math.random() * 1;
 var yRange = Math.random() * 1000;
-for (var i = 0; i < 100; i++) {           
+for (var i = 0; i < 100; i++) {
   	var newX = Math.random()*xRange;
   	var newY = Math.floor(Math.random()*yRange);
   	var newZ = Math.floor(Math.random()*1000);
-    dataset2.push([newX,newY,newZ]);            
-}     
+    dataset2.push([newX,newY,newZ]);
+}
 // Scales
 var margin = 4;
 var axisMargin = 50;
@@ -77,7 +77,7 @@ var yScale = d3.scale.linear()
 var cScale = d3.scale.linear()
 				.domain([0,1000])
 				.rangeRound([0,255]);
-    
+
 svg.selectAll("circle")
 .data(dataset2)
 .enter()
@@ -111,4 +111,4 @@ svg.append("g")
 d3.json("testDB.json", function(json) {
     console.log(json);
 })
- 
+
