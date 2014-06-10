@@ -4,10 +4,30 @@
         <meta charset="utf-8">
         <title>Page Title</title>
         <script src="codemirror-3.21/lib/codemirror.js"></script>
-        <link rel="stylesheet" href="codemirror-3.21/lib/codemirror.css">
-        <script src="codemirror-3.21/mode/javascript/javascript.js"></script> 
-        <script type="text/javascript" src="d3/d3.js"></script>
+        <link rel="stylesheet" type="text/css" href="codemirror-3.21/lib/codemirror.css">
+        <script src="codemirror-3.21/mode/javascript/javascript.js"></script>
+		
+		<!-- jQUERY -->
+		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+		<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>       
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">		
         
+		<!-- D3 LIBRARY -->
+		<script type="text/javascript" src="d3/d3.js"></script>
+		
+		<!-- GLYPHS: FONT AWESOME -->
+		<link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+		
+		<!-- FORM BOOTSTRAP 3 -->
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        
+		
+		
         <style type="text/css">
             div.bar {
                 display: inline-block;
@@ -21,8 +41,25 @@
               position: fixed;
               top: 0;
               right: 0;
+			  width: 500px;
+			  height: auto;
             }
+			
+			.left {
+				float: left;
+			}
+			
+			div.half-sec {
+				display: inline-block;
+				width: 50%;
+			}
+			
+			.align-right {text-align: right;}
+			.align-left {text-align: left;}
             
+			span.badge > a {color:white;}
+			
+			
             /* Allow editor to automatically resize to fit its content*/
             .CodeMirror {
               border: 1px solid #eee;
@@ -51,7 +88,7 @@
               lineNumbers: true,
               viewportMargin: Infinity             
             });
-            // Allowing instant feedback
+            // Allowing instant feedback      
             function onChangeCallback(instance,object) {
                 var code = myCodeMirror.getValue();
                 localStorage.code = code;
@@ -59,8 +96,7 @@
                 var script = document.createElement('script');
                 script.innerHTML = code;
                 document.body.appendChild(script);
-                document.body.removeChild(script);
-                
+                document.body.removeChild(script);               
                 }
             myCodeMirror.on("change", onChangeCallback);
 

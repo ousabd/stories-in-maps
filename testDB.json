@@ -1,0 +1,212 @@
+[  {
+    "type": "tree",
+	"name": "Categorical Tree 1",
+    "content": {
+      "catName": "Buddhism",
+      "color": "black",
+      "children": [
+        {
+          "catname": "Early Schools",
+          "color": "dark green",
+          "children": [
+            {
+              "catname": "Theravada",
+              "color": "green"
+            },
+            {
+              "catname": "Sarvastivadins",
+              "color": "light green"
+            }
+          ]
+        },
+        {
+          "catname": "Mahayana",
+          "color": "red",
+          "children": [
+            {
+              "catname": "Chinese Buddhism",
+              "color": "purple",
+              "children": [
+                {
+                  "catname": "Early Chinese Schools",
+                  "color": "light purple"
+                },
+                {
+                  "catname": "Chan",
+                  "color": "pink"
+                },
+                {
+                  "catname": "Amidism",
+                  "color": "salmon"
+                }
+              ]
+            },
+            {
+              "catname": "Japanese Buddhism",
+              "color": "blue",
+              "children": [
+                {
+                  "catname": "Early Japanese Schools",
+                  "color": "light purple"
+                },
+                {
+                  "catname": "Zen",
+                  "color": "light purple"
+                }
+              ]
+            },
+            {
+              "catname": "Tibetan Buddhism",
+              "color": "orange"
+            }
+          ]
+        },
+        {
+          "catname": "Tantrayana",
+          "color": "yellow"
+        }
+      ]
+    }
+  },
+  {
+    "type": "label",
+    "name": "Bodh Gaya",
+    "coordinates": [
+      84.99,
+      24.7
+    ],
+    "timespan": [
+      "500BC",
+      null
+    ],
+    "text": "Bodh Gaya",
+    "keywords": [
+      "Buddha",
+      "holy place",
+      "enlightenment"
+    ]
+  },
+  {
+    "type": "area",
+    "name": "Pre-Ashoka Buddhist area",
+    "outline": [
+      {
+        "date": "454BC",
+        "coordinates": [
+          [
+            84.99,
+            24.7
+          ]
+        ]
+      },
+      {
+        "date": "250BC",
+        "coordinates": [
+          [
+            74.6630859375,
+            28.07198030177986
+          ],
+          [
+            78.57421875,
+            29.878755346037977
+          ],
+          [
+            84.111328125,
+            28.22697003891834
+          ],
+          [
+            88.0224609375,
+            25.681137335685307
+          ],
+          [
+            87.451171875,
+            22.2280904167845
+          ],
+          [
+            79.4970703125,
+            24.367113562651276
+          ],
+          [
+            74.6630859375,
+            28.07198030177986
+          ]
+        ]
+      }
+    ],
+    "timespan": [
+      "454BC",
+      "250BC"
+    ],
+    "descShort": "Extension area of buddhism before Asoka",
+    "descLong": "Before the reign of Asoka, the first and most enthusiastic royal patron of Buddhism, the teachings of Buddha did not spread farther than north of India and south of Nepal.",
+    "category": "Early Schools",
+    "keywords": "India"
+  },
+  {
+    "type": "people",
+    "name": "Buddha",
+    "events": [
+      {
+        "date": "483BC",
+        "text": "Birth in Kapilavastu, Shakya kingdom (today Nepal)"
+      },
+      {
+        "age": "35",
+        "text": "Enlightenment in Bodh Gaya, Bihar, India"
+      },
+      {
+        "age": "36",
+        "text": "First sermon in Sarnath, Uttar Pradesh, India"
+      },
+      {
+        "date": "400BC",
+        "text": "Death in Kushinagar, Uttar Pradesh,India"
+      }
+    ],
+    "travels": [
+      {
+        "coordinates": [
+          83.05281,
+          27.544806
+        ],
+        "timespan": [
+          "483BC",
+          "454BC"
+        ]
+      },
+      {
+        "place": "Sarnath",
+        "timespan": [
+          "447BC",
+          "447BC"
+        ]
+      }
+    ],
+    "descShort": "Siddharta Gautama Buddha (c.483BC-400BC), on whose teachings Buddhism was founded",
+    "descLong": "Gautama Buddha, also known as Siddhārtha Gautama, Shakyamuni, or simply the Buddha, was a sage on whose teachingsBuddhism was founded. Born in the Shakya republic in the Himalayan foothills, Gautama Buddha taught primarily in northeastern India.Buddha means \"awakened one\" or \"the enlightened one.\" In most Buddhist traditions, Siddhartha Gautama is regarded as the Supreme Buddha of our age. Gautama taught a Middle Way between sensual indulgence and the severe asceticism found in the Sramana (renunciation) movement common in his region. He later taught throughout regions of eastern India such as Magadha and Kośala. Gautama is the primary figure in Buddhism, and accounts of his life, discourses, and monastic rules are believed by Buddhists to have been summarized after his death and memorized by his followers. Various collections of teachings attributed to him were passed down by oral tradition, and first committed to writing about 400 years later.",
+    "keywords": [
+      "Buddha",
+      "saint"
+    ]
+  },
+  {
+    "type": "migration",
+    "name": "Export of Buddhism to Sri Lanka",
+    "coordinatesSource": [
+      81.460876,
+      25.085599
+    ],
+    "coordinatesTarget": "Sri lanka",
+    "timespan": [
+      "240BC",
+      "0BC"
+    ],
+    "style": "early_buddhism",
+    "descShort": "Buddhism was introduced from India into Sri Lanka by Mahinda, son of Asoka, in the 3rd century BCE, where it remained alive until today. Sri Lanka saw the development of the the Theravada school, the oldest of all active schools today. In the 13th century, Theravada was introduced from Sri Lanka into most south-east Asian countries (Birma, Thailand, Laos and Cambodia) where it is now the main religion.",
+    "keywords": [
+      "Mahinda",
+      "Theravada",
+      "Buddhist expansion"
+    ]
+  }
+]
