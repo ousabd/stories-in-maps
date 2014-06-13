@@ -13,23 +13,26 @@ app.use(express.logger('dev'));
 app.get('/get', function(req, res, next) {
   var filename = req.query['file'];
   if (!filename) return next(new Error('No file provided'));
-  fs.readFile('../' + filename, 'utf8', function (err, data) {
-    if (err) return next(err);
-    res.set('Content-Type', 'text/plain');
-    res.send(data.toString());
+  fs.exists('../' + filename, function(err, exists) {
+    if (!exists) return next(new Error('File does not exist'));
+    fs.readFile('../' + filename, 'utf8', function (err, data) {
+      if (err) return next(err);
+      res.set('Content-Type', 'text/plain');
+      res.send(data.toString());
+    });
   });
 });
 
-app.post('/put', function(req, res) {
+app.post('/put', function(req, res, next) {
   fs.writeFile('../' + req.body.file, req.body.data, 'utf8', function(err) {
-    if (err) throw err;
+    if (err) return next(err);
     res.send('');
   });
 });
 
 app.use(function(err, req, res, next) {
   console.error(err.stack);
-  res.send(500, 'Something broke!');
+  res.send(500, err.toString());
 });
 
 app.listen(app.get('port'));
