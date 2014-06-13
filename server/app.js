@@ -8,14 +8,13 @@ app.use(express.methodOverride());
 app.use('/', express.static(__dirname + '/..'));
 app.set('port', 3000);
 app.locals.pretty = true;
-app.use(express.errorHandler());
 app.use(express.logger('dev'));
 
-app.get('/get', function(req, res) {
+app.get('/get', function(req, res, next) {
   var filename = req.query['file'];
-  if (!filename) throw new Error('No file provided');
+  if (!filename) return next(new Error('No file provided'));
   fs.readFile('../' + filename, 'utf8', function (err, data) {
-    if (err) throw err;
+    if (err) return next(err);
     res.set('Content-Type', 'text/plain');
     res.send(data.toString());
   });
@@ -26,6 +25,11 @@ app.post('/put', function(req, res) {
     if (err) throw err;
     res.send('');
   });
+});
+
+app.use(function(err, req, res, next) {
+  console.error(err.stack);
+  res.send(500, 'Something broke!');
 });
 
 app.listen(app.get('port'));
