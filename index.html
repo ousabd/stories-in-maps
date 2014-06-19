@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
-    <head>           
+    <head>
         <meta charset="utf-8">
         <title>Page Title</title>
         <script src="codemirror-3.21/lib/codemirror.js"></script>
         <link rel="stylesheet" type="text/css" href="codemirror-3.21/lib/codemirror.css">
         <script src="codemirror-3.21/mode/javascript/javascript.js"></script>
-		
+
 		<!-- jQUERY -->
 		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-		<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>       
-		<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">		
-        
+		<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+
 		<!-- D3 LIBRARY -->
 		<script type="text/javascript" src="d3/d3.js"></script>
-		
+
 		<!-- GLYPHS: FONT AWESOME -->
 		<link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-		
+
 		<!-- FORM BOOTSTRAP 3 -->
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
@@ -25,9 +25,9 @@
 		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-        
-		
-		
+
+
+
         <style type="text/css">
             div.bar {
                 display: inline-block;
@@ -35,7 +35,7 @@
                 height: 75px;   /* We'll override this later */
                 background-color: teal;
             }
-            
+
             .canvas {
               z-index: 10;
               position: fixed;
@@ -44,22 +44,22 @@
 			  width: 500px;
 			  height: auto;
             }
-			
+
 			.left {
 				float: left;
 			}
-			
+
 			div.half-sec {
 				display: inline-block;
 				width: 50%;
 			}
-			
+
 			.align-right {text-align: right;}
 			.align-left {text-align: left;}
-            
+
 			span.badge > a {color:white;}
-			
-			
+
+
             /* Allow editor to automatically resize to fit its content*/
             .CodeMirror {
               border: 1px solid #eee;
@@ -75,33 +75,57 @@
     <body>
         <h1>CodeMirror Editor</h1>
 
-        <script type="text/javascript">  
-        
+        <script type="text/javascript">
+
+        // Outside of the ready function as sim-editor.js depends on it...
+        var canvas = d3.select("body").append("div").attr("class", "canvas").attr("id","cid");
+
+        // Don't execute this until other scripts and the DOM is completely loaded
+        $(document).ready(function() {
+
+            // File being edited
+            var filename = $('#script-being-edited').attr('src');
+
             // TODO Execute code on page load
-        
-            var canvas = d3.select("body").append("div").attr("class", "canvas").attr("id","cid");
-        
+
             // Loading editor
             var myCodeMirror = CodeMirror(document.body, {
-              value: localStorage.code || "var a;",
+              value: '',
               mode: "javascript",
               lineNumbers: true,
-              viewportMargin: Infinity             
+              viewportMargin: Infinity
             });
-            // Allowing instant feedback      
+
+            // Populate the editor with the contents of the file being edited
+            $.get(filename, function(respone) {
+              myCodeMirror.setValue(respone);
+              // Now, start monitoring for changes
+              myCodeMirror.on("change", onChangeCallback);
+            })
+
+            // Allowing instant feedback
             function onChangeCallback(instance,object) {
                 var code = myCodeMirror.getValue();
-                localStorage.code = code;
-                //eval(code);
-                var script = document.createElement('script');
-                script.innerHTML = code;
-                document.body.appendChild(script);
-                document.body.removeChild(script);               
-                }
-            myCodeMirror.on("change", onChangeCallback);
+                var data = { content: code };
 
+                // Asking the server to save the changes to disk
+                $.post('put/' + filename, data, function(response) {
+                  // TODO handle errors
+                });
+
+                // Reload the script file being edited
+                $('#script-being-edited').remove();
+                var script = document.createElement('script');
+                script.id = 'script-being-edited';
+                script.src = filename;
+                document.body.appendChild(script);
+
+            }
+          });
         </script>
-        
-        
+
+
+      <script id="script-being-edited" src="sim-editor.js"></script>
+
     </body>
 </html>

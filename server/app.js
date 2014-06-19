@@ -10,6 +10,7 @@ app.set('port', 3000);
 app.locals.pretty = true;
 app.use(express.logger('dev'));
 
+// Why is this here? You can just GET /filename.ext "express.static..." above should allow this
 app.get('/get', function(req, res, next) {
   var filename = req.query['file'];
   if (!filename) return next(new Error('No file provided'));
@@ -23,8 +24,11 @@ app.get('/get', function(req, res, next) {
   });
 });
 
-app.post('/put', function(req, res, next) {
-  fs.writeFile('../' + req.body.file, req.body.data, 'utf8', function(err) {
+app.post('/put/:filename', function(req, res, next) {
+  var filename = req.params.filename;
+  if (filename == 'index.html') return next(new Error('Editing index.html has been disabled'));
+  var content = req.body.content;
+  fs.writeFile('../' + filename, content, 'utf8', function(err) {
     if (err) return next(err);
     res.send('');
   });
