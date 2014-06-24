@@ -3,31 +3,56 @@
     <head>
         <meta charset="utf-8">
         <title>Page Title</title>
+		
+        <!-- CODE MIRROR (local) -->
         <script src="codemirror-3.21/lib/codemirror.js"></script>
-        <link rel="stylesheet" type="text/css" href="codemirror-3.21/lib/codemirror.css">
         <script src="codemirror-3.21/mode/javascript/javascript.js"></script>
-
+        <link rel="stylesheet" type="text/css" href="codemirror-3.21/lib/codemirror.css">
+		
 		<!-- jQUERY -->
+		<!-- online -->
 		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-		<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-		<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-
-		<!-- D3 LIBRARY -->
+		<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>       
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">	
+		<!-- local 
+		<script src="jquery/jquery-1.11.1.min.js"></script>
+		<script src="jquery/jquery-ui-1.10.4.js"></script>       
+		<link rel="stylesheet" href="jquery/jquery-ui-1.10.4.min.css"> -->
+        
+		<!-- D3 LIBRARY (local) -->
 		<script type="text/javascript" src="d3/d3.js"></script>
-
+		
 		<!-- GLYPHS: FONT AWESOME -->
+		<!-- online -->
 		<link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-
-		<!-- FORM BOOTSTRAP 3 -->
-		<!-- Latest compiled and minified CSS -->
+		<!-- local
+		<link href="font-awesome/font-awesome.min-4.1.0.css" rel="stylesheet"> -->
+		
+		<!-- BOOTSTRAP 3 -->
+		<!-- online -->
 		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-		<!-- Optional theme -->
 		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
-		<!-- Latest compiled and minified JavaScript -->
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-
-
-
+		<!-- local
+		<link rel="stylesheet" href="bootstrap/bootstrap.min-3.1.1.css">
+		<link rel="stylesheet" href="bootstrap/bootstrap-theme.min-3.1.1.css">
+		<script src="bootstrap/bootstrap.min-3.1.1.js"></script> -->
+		
+		<!-- X-EDITABLE -->
+		<!-- online -->
+		<link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+		<!-- local
+		<link rel="stylesheet" href="x-editable/bootstrap-theme.min-3.1.1.css">
+		<script src="x-editable/bootstrap.min-3.1.1.js"></script> -->
+		
+		<!-- SELECT2 -->
+		<!-- local -->
+		<link href="select2/select2.css" rel="stylesheet" type="text/css"></link>  
+		<link href="select2/select2-bootstrap.css" rel="stylesheet" type="text/css"></link> 
+		<script src="select2/select2.js"></script>  
+        
+		
         <style type="text/css">
             div.bar {
                 display: inline-block;
@@ -72,12 +97,13 @@
 
         </style>
     </head>
+	
+	
     <body>
         <h1>CodeMirror Editor</h1>
-
+		
         <script type="text/javascript">
-
-        // Outside of the ready function as sim-editor.js depends on it...
+		// Outside of the ready function as sim-editor.js depends on it...
         var canvas = d3.select("body").append("div").attr("class", "canvas").attr("id","cid");
 
         // Don't execute this until other scripts and the DOM is completely loaded
@@ -118,8 +144,7 @@
                 var script = document.createElement('script');
                 script.id = 'script-being-edited';
                 script.src = filename;
-                document.body.appendChild(script);
-
+                document.body.appendChild(script); 	
             }
           });
         </script>
