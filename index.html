@@ -69,22 +69,40 @@
 			  width: 500px;
 			  height: auto;
             }
-
+			
+			.canvas > div {
+				height: 300px;
+				overflow-x: hidden;
+				overflow-y: scroll;}
+			
 			.left {
 				float: left;
 			}
 
-			div.half-sec {
-				display: inline-block;
-				width: 50%;
-			}
 
 			.align-right {text-align: right;}
 			.align-left {text-align: left;}
 
 			span.badge > a {color:white;}
 
-
+			.mycolpadding {
+			  padding-left: 15px;
+			  padding-right: 15px;
+			}
+			
+			/* Make textareas resizable only vertically */
+			textarea {resize: vertical;}
+			
+			/* Allow Boostrap tooltips to be widee */
+			.tooltip-inner {
+				max-width: 350px; 
+			}
+			
+			/* Remove top padding of radio in forms*/
+			.form-horizontal .radio {
+				padding-top: 0px;
+			}
+			
             /* Allow editor to automatically resize to fit its content*/
             .CodeMirror {
               border: 1px solid #eee;
